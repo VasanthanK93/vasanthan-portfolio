@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CounterAnimationProps } from '../../types';
+import { CounterAnimationProps } from '@/types';
 
 // Easing functions
 export const easingFunctions = {

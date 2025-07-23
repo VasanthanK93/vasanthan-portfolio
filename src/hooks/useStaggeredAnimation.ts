@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ScrollAnimationOptions } from "../types";
-import { useScrollAnimation } from "./useScrollAnimation";
+import { ScrollAnimationOptions } from "@/types";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Hook for staggered animations with better performance
 export const useStaggeredAnimation = (itemCount: number, options: ScrollAnimationOptions = {}) => {

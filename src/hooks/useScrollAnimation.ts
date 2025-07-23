@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { ScrollAnimationOptions } from '../types';
+import { ScrollAnimationOptions } from '@/types';
 
 export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const {
