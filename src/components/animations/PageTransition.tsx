@@ -1,4 +1,5 @@
 import React from 'react';
+import safeIntersectionObserver from '@/lib/safeIntersectionObserver ';
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -190,29 +191,31 @@ export const RevealTransition: React.FC<RevealTransitionProps> = ({
   const elementRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const element = elementRef.current;
-    if (!element) return;
+  const element = elementRef.current;
+  if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          setHasBeenVisible(true);
-          
-          if (once) {
-            observer.unobserve(element);
-          }
-        } else if (!once && hasBeenVisible) {
-          setIsVisible(false);
+  console.log('RevealTransition threshold:', threshold, typeof threshold);
+
+  const observer = safeIntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        setHasBeenVisible(true);
+        
+        if (once) {
+          observer.unobserve(element);
         }
-      },
-      { threshold }
-    );
+      } else if (!once && hasBeenVisible) {
+        setIsVisible(false);
+      }
+    },
+    { threshold }
+  );
 
-    observer.observe(element);
+  observer.observe(element);
 
-    return () => observer.disconnect();
-  }, [threshold, once, hasBeenVisible]);
+  return () => observer.disconnect();
+}, [threshold, once, hasBeenVisible]);
 
   const getRevealStyles = () => {
     const baseTransition = `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`;

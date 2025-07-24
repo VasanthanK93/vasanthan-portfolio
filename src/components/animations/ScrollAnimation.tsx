@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import safeIntersectionObserver from '@/lib/safeIntersectionObserver ';
 
 export interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -24,33 +25,35 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) {
-            setHasTriggered(true);
-          }
-        } else if (!triggerOnce && !hasTriggered) {
-          setIsVisible(false);
+  console.log('ScrollAnimation threshold:', threshold, typeof threshold);
+
+  const observer = safeIntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        if (triggerOnce) {
+          setHasTriggered(true);
         }
-      },
-      {
-        threshold,
-        rootMargin: '0px 0px -50px 0px',
+      } else if (!triggerOnce && !hasTriggered) {
+        setIsVisible(false);
       }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    },
+    {
+      threshold,
+      rootMargin: '0px 0px -50px 0px',
     }
+  );
 
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, [threshold, triggerOnce, hasTriggered]);
+  if (elementRef.current) {
+    observer.observe(elementRef.current);
+  }
+
+  return () => {
+    if (elementRef.current) {
+      observer.unobserve(elementRef.current);
+    }
+  };
+}, [threshold, triggerOnce, hasTriggered]);
 
   const getAnimationStyles = (): React.CSSProperties => {
     const baseStyles: React.CSSProperties = {

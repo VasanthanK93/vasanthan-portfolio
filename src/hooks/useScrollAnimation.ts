@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import safeIntersectionObserver from '@/lib/safeIntersectionObserver ';
 import { ScrollAnimationOptions } from '@/types';
 
 export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
@@ -8,37 +9,39 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
     rootMargin = '0px 0px -50px 0px'
   } = options;
 
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+  const element = ref.current;
+  if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          if (triggerOnce) {
-            setHasTriggered(true);
-          }
-        } else if (!triggerOnce && !hasTriggered) {
-          setIsInView(false);
+  console.log('useScrollAnimation amount:', amount, typeof amount);
+
+  const observer = safeIntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        if (triggerOnce) {
+          setHasTriggered(true);
         }
-      },
-      {
-        threshold: typeof amount === 'number' ? amount : 0.1,
-        rootMargin
+      } else if (!triggerOnce && !hasTriggered) {
+        setIsInView(false);
       }
-    );
+    },
+    {
+      threshold: typeof amount === 'number' ? amount : 0.1,
+      rootMargin
+    }
+  );
 
-    observer.observe(element);
+  observer.observe(element);
 
-    return () => {
-      observer.unobserve(element);
-    };
-  }, [amount, triggerOnce, rootMargin, hasTriggered]);
+  return () => {
+    observer.unobserve(element);
+  };
+}, [amount, triggerOnce, rootMargin, hasTriggered]);
 
   return { ref, isInView, hasTriggered };
 };

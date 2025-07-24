@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import safeIntersectionObserver from '@/lib/safeIntersectionObserver ';
 import { CounterAnimationProps } from '@/types';
 
 // Easing functions
@@ -95,37 +96,39 @@ const CounterAnimation: React.FC<CounterAnimationProps> = ({
 
   // Intersection Observer for scroll trigger
   useEffect(() => {
-    if (!triggerOnScroll) {
-      startAnimation();
-      return;
-    }
+  if (!triggerOnScroll) {
+    startAnimation();
+    return;
+  }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setIsInView(true);
-          startAnimation();
-        }
-      },
-      {
-        threshold: scrollThreshold,
-        rootMargin: '0px 0px -50px 0px',
+  console.log('CounterAnimation scrollThreshold:', scrollThreshold, typeof scrollThreshold);
+
+  const observer = safeIntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && !hasStarted) {
+        setIsInView(true);
+        startAnimation();
       }
-    );
+    },
+    {
+      threshold: scrollThreshold,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
 
+  if (counterRef.current) {
+    observer.observe(counterRef.current);
+  }
+
+  return () => {
     if (counterRef.current) {
-      observer.observe(counterRef.current);
+      observer.unobserve(counterRef.current);
     }
-
-    return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [triggerOnScroll, scrollThreshold, hasStarted]);
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
+}, [triggerOnScroll, scrollThreshold, hasStarted]);
 
   return (
     <span

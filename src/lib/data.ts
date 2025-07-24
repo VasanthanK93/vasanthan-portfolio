@@ -1,12 +1,12 @@
 export const personalInfo = {
   name: "Vasanthan K",
-  title: "Technical Lead & Full Stack Developer",
+  title: "Technical Lead & Senior Full Stack Developer",
   email: "vasanthank29@gmail.com",
   phone: "+91 9884252651",
   address: "Chennai, India",
   linkedin: "https://www.linkedin.com/in/vasanthank/",
   medium: "https://medium.com/@vasanthankcomrads",
-  summary: "Accomplished Full Stack Developer with 9 years of experience in cutting-edge technologies such as JavaScript, Node.js, and MongoDB. Expert in both frontend and backend development, leading teams to build high-performance applications.",
+  summary: "Accomplished Full Stack Developer with 9+ years of experience in cutting-edge technologies such as JavaScript, Node.js, and MongoDB. Expert in both frontend and backend development, leading teams to build high-performance applications.",
 }
 
 export const skills = {
