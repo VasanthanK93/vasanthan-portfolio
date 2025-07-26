@@ -56,9 +56,9 @@ const About: React.FC = () => {
   // Professional journey timeline
   const timeline = [
     {
-      year: '2019',
-      title: 'Started My Journey',
-      description: 'Began learning web development with HTML, CSS, and JavaScript.',
+      year: '2016',
+      title: 'Started My Journey at cholamandalam Investment and Finance Pvt Ltd',
+      description: 'Began My career as a Test Engineer, testing web and mobile applications.',
       icon: '🌱',
       color: 'from-green-500 to-emerald-600'
     },
@@ -215,8 +215,10 @@ const About: React.FC = () => {
                           new technologies. Each project has taught me something valuable.
                         </p>
                         <p>
-                          Today, I specialize in full-stack development with a focus on ReactJs, NodeJs, 
-                          and cloud technologies. I love the challenge of turning complex requirements 
+                          Today, I specialize in full-stack development with a focus on UI frameworks 
+                          like ReactJs, VueJS, Angular svelte , BackEnd technologies like NodeJs, 
+                          ExpressJs, Graphql and databases like MongoDB, PostgreSQL, and MySQL. 
+                          and . I love the challenge of turning complex requirements 
                           into elegant, user-friendly solutions.
                         </p>
                       </div>
@@ -309,55 +311,56 @@ const About: React.FC = () => {
                 {/* Timeline Items */}
                 <div className="space-y-12">
                   {timeline.map((item, index) => (
-                    <div
-                      key={item.year}
-                      className={cn(
-                        'relative flex items-center transition-all duration-700',
-                        index % 2 === 0 ? 'justify-start' : 'justify-end'
-                      )}
-                    >
-                      {/* Timeline Node */}
-                      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                      <div
+                        key={item.year}
+                        className={cn(
+                          'relative flex items-center transition-all duration-700',
+                          index % 2 === 0 ? 'justify-start' : 'justify-end'
+                        )}
+                      >
+                        {/* Timeline Node */}
+                        <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                          <div
+                            className={cn(
+                              'w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg transition-all duration-500',
+                              `bg-gradient-to-br ${item.color}`,
+                              isItemVisible(index) ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
+                            )}
+                          >
+                            {item.icon}
+                          </div>
+                        </div>
+
+                        {/* Timeline Content */}
                         <div
                           className={cn(
-                            'w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg transition-all duration-500',
-                            `bg-gradient-to-br ${item.color}`,
-                            isItemVisible(index) ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
+                            'w-5/12 transition-all duration-700',
+                            index % 2 === 0 ? 'pr-8' : 'pl-8',
+                            isItemVisible(index) 
+                              ? 'opacity-100 translate-y-0' 
+                              : 'opacity-0 translate-y-8'
                           )}
+                          style={{ transitionDelay: `${index * 200}ms` }}
                         >
-                          {item.icon}
+                          <Card variant="elevated" hover className="p-6 group">
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between">
+                                <Badge variant="outline" size="sm">
+                                  {item.year}
+                                </Badge>
+                              </div>
+                              <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                                {item.title}
+                              </h4>
+                              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                {item.description}
+                              </p>
+                            </div>
+                          </Card>
                         </div>
                       </div>
-
-                      {/* Timeline Content */}
-                      <div
-                        className={cn(
-                          'w-5/12 transition-all duration-700',
-                          index % 2 === 0 ? 'pr-8' : 'pl-8',
-                          isItemVisible(index) 
-                            ? 'opacity-100 translate-y-0' 
-                            : 'opacity-0 translate-y-8'
-                        )}
-                        style={{ transitionDelay: `${index * 200}ms` }}
-                      >
-                        <Card variant="elevated" hover className="p-6 group">
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <Badge variant="outline" size="sm">
-                                {item.year}
-                              </Badge>
-                            </div>
-                            <h4 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                              {item.title}
-                            </h4>
-                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                              {item.description}
-                            </p>
-                          </div>
-                        </Card>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -443,7 +446,7 @@ const About: React.FC = () => {
 
               {/* Fun Facts */}
               <RevealTransition direction="up" threshold={800}>
-                <Card variant="glass" className="p-8 text-center">
+                <Card variant="filled" className="p-8 text-center">
                   <div className="space-y-4">
                     <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
                       Fun Facts About Me

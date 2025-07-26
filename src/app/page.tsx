@@ -1,5 +1,8 @@
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
+import Skills from '@/components/sections/Skills';
+import Projects from '@/components/sections/Projects';
+import Experience from '@/components/sections/Experience';
 
 export default function Home() {
   return (
@@ -9,9 +12,16 @@ export default function Home() {
       
       {/* About Section */}
       <About />
-      
-      {/* Placeholder for future sections */}
-      <div className="py-24">
+
+      {/* Skills Section */}
+      <Skills />
+
+      {/* Projects Section */}
+      <Projects />
+
+      {/* Experience Section */}
+      <Experience />
+      {/* <div className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -22,7 +32,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 // Hook for staggered animations with better performance
 export const useStaggeredAnimation = (itemCount: number, options: ScrollAnimationOptions = {}) => {
     const { ref, isInView } = useScrollAnimation(options);
-    const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
+    const [visibleItems, setVisibleItems] = useState<number[]>([0,1,2,3,4,5,6,7,8,9,10]);
     const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   
     const clearTimeouts = useCallback(() => {
@@ -14,12 +14,12 @@ export const useStaggeredAnimation = (itemCount: number, options: ScrollAnimatio
     }, []);
   
     useEffect(() => {
-      if (isInView && visibleItems.size === 0) {
+      if (isInView && visibleItems.length === 0) {
         clearTimeouts(); // Clear any existing timeouts
         
         for (let i = 0; i < itemCount; i++) {
           const timeout = setTimeout(() => {
-            setVisibleItems(prev => new Set([...prev, i]));
+            setVisibleItems(prev => [...prev, i]);
           }, i * 100); // 100ms delay between each item
           
           timeoutsRef.current.push(timeout);
@@ -27,9 +27,9 @@ export const useStaggeredAnimation = (itemCount: number, options: ScrollAnimatio
       }
   
       return clearTimeouts;
-    }, [isInView, itemCount, visibleItems.size, clearTimeouts]);
+    }, [isInView, itemCount, visibleItems.length, clearTimeouts]);
   
-    const isItemVisible = useCallback((index: number) => visibleItems.has(index), [visibleItems]);
+    const isItemVisible = useCallback((index: number) => visibleItems.includes(index), [visibleItems]);
   
-    return { ref, isInView, isItemVisible, visibleCount: visibleItems.size };
+    return { ref, isInView, isItemVisible, visibleCount: visibleItems.length };
   };
