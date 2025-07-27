@@ -3,6 +3,7 @@ import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
+import BlogSection from '@/components/sections/Blogs';
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
 
       {/* Experience Section */}
       <Experience />
+
+      {/* Blog Section */}
+      <BlogSection />
       {/* <div className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">

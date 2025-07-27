@@ -11,6 +11,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   rounded?: boolean;
   gradient?: boolean;
   glowing?: boolean;
+  as?: React.ElementType;
+  href?: string;
+  target?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

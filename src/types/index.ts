@@ -68,16 +68,16 @@ export interface Education {
   logo?: string;
 }
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  url: string;
-  publishedAt: string;
-  readTime?: string;
-  tags?: string[];
-  image?: string;
-}
+// export interface BlogPost {
+//   id: string;
+//   title: string;
+//   excerpt: string;
+//   url: string;
+//   publishedAt: string;
+//   readTime?: number;
+//   tags?: string[];
+//   image?: string;
+// }
 
 export interface Testimonial {
   id: string;
@@ -315,3 +315,46 @@ export interface ScrollAnimationOptions {
     triggerOnce?: boolean;
     rootMargin?: string;
   }
+
+export interface MediumArticle {
+  title: string;
+  pubDate: string;
+  link: string;
+  guid: string;
+  author: string;
+  thumbnail?: string;
+  description: string;
+  content: string;
+  enclosure?: {
+    link: string;
+    type: string;
+  };
+  categories: string[];
+}
+
+export interface RSS2JSONResponse {
+  status: string;
+  feed: {
+    url: string;
+    title: string;
+    link: string;
+    author: string;
+    description: string;
+    image: string;
+  };
+  items: MediumArticle[];
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  publishedAt: string;
+  author: string;
+  readTime: number;
+  thumbnail: string;
+  url: string;
+  tags: string[];
+  isExternal: boolean;
+}
