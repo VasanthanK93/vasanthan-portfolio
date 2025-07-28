@@ -17,7 +17,7 @@ interface BlogSectionProps {
 
 const BlogSection: React.FC<BlogSectionProps> = ({
   showAll = false,
-  maxPosts = 6,
+  maxPosts = 4,
   className 
 }) => {
   const [posts, setPosts] = useState<BlogPost[]>([]);

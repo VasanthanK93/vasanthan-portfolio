@@ -58,43 +58,50 @@ const About: React.FC = () => {
     {
       year: '2016',
       title: 'Started My Journey at cholamandalam Investment and Finance Pvt Ltd',
-      description: 'Began My career as a Test Engineer, testing web and mobile applications.',
+      description: 'Began My career as a Test Engineer, testing web and mobile applications.and later transitioned to Backend Development in NodeJs and MongoDB.',
       icon: '🌱',
       color: 'from-green-500 to-emerald-600'
     },
     {
-      year: '2020',
-      title: 'First Full-Stack Project',
-      description: 'Built my first complete web application using ReactJs and NodeJs.',
+      year: '2019',
+      title: 'Got Placed at TCS',
+      description: 'Joined Tata Consultancy Services as a Software Engineer, Where I started my journey as a backend developer and later transitioned to full-stack development.',
       icon: '🚀',
       color: 'from-blue-500 to-cyan-600'
     },
     {
-      year: '2021',
-      title: 'Professional Development',
-      description: 'Started working as a junior developer, learning from experienced mentors.',
+      year: '2019',
+      title: 'First Full Stack Project',
+      description: 'Started working as a full-stack developer in a US based Retail project, building my first complete web application using ReactJs, ExpressJs, NodeJs and MongoDB.',
       icon: '💼',
       color: 'from-purple-500 to-pink-600'
     },
     {
-      year: '2022',
+      year: '2020',
       title: 'Advanced Skills',
-      description: 'Mastered modern frameworks and cloud technologies.',
+      description: 'Joined a US based Healthcare project, where I enhanced my skills in AngularJS, Angular and Docker',
       icon: '⚡',
       color: 'from-yellow-500 to-orange-600'
     },
     {
-      year: '2023',
-      title: 'Leadership Role',
-      description: 'Led development teams and mentored junior developers.',
+      year: '2022',
+      title: 'Volunteering for Chennai Cyclist',
+      description: 'Started a Volunteering to a Chennai based Cycling Community "Chennai Cyclists" helping them to build and maintain their Main Site, Rider Site and Admin Site using Svelte and ReactJS',
       icon: '👑',
       color: 'from-indigo-500 to-purple-600'
     },
     {
-      year: '2024',
-      title: 'Full Stack Expert',
-      description: 'Specializing in scalable architectures and modern development practices.',
+      year: '2022',
+      title: 'Started Technical Lead Role',
+      description: 'Joined a new team for a US based Healthcare project as a Technical Lead, where I led a team of developers to build scalable and maintainable applications using VueJS, NodeJs, GraphQL and .Net.',
       icon: '🎯',
+      color: 'from-red-500 to-pink-600'
+    },
+    {
+      year: '2025',
+      title: 'Migration from Svelte to Nextjs',
+      description: 'As part of the Chennai Cyclist project, I started combining and migrating the main site and Rider site  from Svelte to Next.js, enhancing performance and SEO.',
+      icon: '🔄',
       color: 'from-red-500 to-pink-600'
     }
   ];
@@ -125,14 +132,18 @@ const About: React.FC = () => {
 
   // Interests and hobbies
   const interests = [
-    { name: 'Open Source', icon: '🌐' },
-    { name: 'Photography', icon: '📸' },
+    { name: 'Cooking', icon: '👨‍🍳' },
     { name: 'Travel', icon: '✈️' },
     { name: 'Music', icon: '🎵' },
-    { name: 'Gaming', icon: '🎮' },
+    { name: 'Photography', icon: '📸' },
     { name: 'Fitness', icon: '💪' },
     { name: 'Reading', icon: '📖' },
-    { name: 'Cooking', icon: '👨‍🍳' }
+    { name: 'Hiking', icon: '🥾' },
+    { name: 'Cycling', icon: '🚴‍♂️' },
+    { name: 'Volunteering', icon: '🤲' },
+    { name: 'Tech Blogging', icon: '📝' },
+    { name: 'Gaming', icon: '🎮' },
+    { name: 'Meditation', icon: '🧘‍♂️' }
   ];
 
   const tabs = [
@@ -216,9 +227,9 @@ const About: React.FC = () => {
                         </p>
                         <p>
                           Today, I specialize in full-stack development with a focus on UI frameworks 
-                          like ReactJs, VueJS, Angular svelte , BackEnd technologies like NodeJs, 
-                          ExpressJs, Graphql and databases like MongoDB, PostgreSQL, and MySQL. 
-                          and . I love the challenge of turning complex requirements 
+                          like ReactJs, VueJS, Angular, svelte, BackEnd technologies like NodeJs, 
+                          ExpressJs, Graphql and databases like MongoDB and MySQL, content management 
+                          system like AEM. I love the challenge of turning complex requirements 
                           into elegant, user-friendly solutions.
                         </p>
                       </div>
@@ -418,7 +429,7 @@ const About: React.FC = () => {
                 </div>
               </RevealTransition>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {interests.map((interest, index) => (
                   <RevealTransition
                     key={interest.name}
@@ -461,13 +472,13 @@ const About: React.FC = () => {
                       <div>
                         <div className="text-3xl mb-2">🌍</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">
-                          Countries visited: <span className="font-bold">5</span>
+                          places visited: <span className="font-bold">5</span>
                         </div>
                       </div>
                       <div>
                         <div className="text-3xl mb-2">📚</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">
-                          Books read this year: <span className="font-bold">12</span>
+                          Books read this year: <span className="font-bold">5</span>
                         </div>
                       </div>
                     </div>

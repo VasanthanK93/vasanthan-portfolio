@@ -20,7 +20,7 @@ const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Skills', href: '/skills' },
-    { name: 'Projects', href: '/projects' },
+    // { name: 'Projects', href: '/projects' },
     { name: 'Experience', href: '/experience' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
 
   const handleDownloadResume = () => {
     // Replace with your actual resume URL
-    const resumeUrl = '/assets/Vasanthan_Resume.pdf';
+    const resumeUrl = 'https://drive.google.com/uc?export=download&id=18p-b24F1C47cFvyrtIVodmvq1JblQGCI';
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'Vasanthan_Resume.pdf';

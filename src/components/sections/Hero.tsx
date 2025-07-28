@@ -83,10 +83,10 @@ const Hero: React.FC = () => {
   ];
 
   const handleDownloadResume = () => {
-    const resumeUrl = '/assets/Vasanth_Kumar_Resume.pdf';
+    const resumeUrl = 'https://drive.google.com/uc?export=download&id=18p-b24F1C47cFvyrtIVodmvq1JblQGCI';
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'Vasanth_Kumar_Resume.pdf';
+    link.download = 'Vasanthan_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -280,9 +280,9 @@ const Experience: React.FC = () => {
 
   const stats = [
     { label: 'Years of Experience', value: 5, suffix: '+', icon: '💼' },
-    { label: 'Projects Completed', value: 25, suffix: '+', icon: '🚀' },
+    { label: 'Domains Worked', value: 3, suffix: '+', icon: '🚀' },
     { label: 'Technologies Mastered', value: 20, suffix: '+', icon: '⚡' },
-    { label: 'Certifications Earned', value: 4, suffix: '', icon: '🏆' }
+    { label: 'Certifications Earned', value: 5, suffix: '', icon: '🏆' }
   ];
 
   const getProficiencyColor = (proficiency: number) => {
@@ -825,10 +825,10 @@ const Experience: React.FC = () => {
                   size="lg"
                   className="group"
                   onClick={() => {
-                    const resumeUrl = '/assets/Vasanth_Kumar_Resume.pdf';
+                    const resumeUrl = 'https://drive.google.com/uc?export=download&id=18p-b24F1C47cFvyrtIVodmvq1JblQGCI';
                     const link = document.createElement('a');
                     link.href = resumeUrl;
-                    link.download = 'Vasanth_Kumar_Resume.pdf';
+                    link.download = 'Vasanthan_Resume.pdf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
