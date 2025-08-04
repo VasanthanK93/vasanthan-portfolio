@@ -11,35 +11,106 @@ import Button from '@/components/ui/Button';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isClient, setIsClient] = useState(false);
+  
   const pathname = usePathname();
   const { isDark, toggleTheme } = useDarkMode();
   const scrollProgress = useScrollProgress();
 
+  // Set client flag after mount to prevent hydration issues
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   // Navigation items
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Skills', href: '/skills' },
-    // { name: 'Projects', href: '/projects' },
-    { name: 'Experience', href: '/experience' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '/home', section: 'home' },
+    { name: 'About', href: '/about', section: 'about' },
+    { name: 'Skills', href: '/skills', section: 'skills' },
+    { name: 'Experience', href: '/experience', section: 'experience' },
+    { name: 'Blog', href: '/blog', section: 'blog' },
+    { name: 'Contact', href: '/contact', section: 'contact' },
   ];
 
   // Handle scroll effect
   useEffect(() => {
+    if (!isClient) return;
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isClient]);
+
+  // Track active section for homepage
+  useEffect(() => {
+    if (!isClient || pathname !== '/') return;
+
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'skills', 'experience', 'blog', 'contact'];
+      const scrollY = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            console.log(`Active section: ${activeSection}`);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname, isClient]);
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  // Determine if nav item is active
+  const isNavItemActive = (item: typeof navItems[0]) => {
+    // Exact path match
+    if (pathname === item.href) return true;
+    
+    // Homepage section matching
+    if (pathname === '/' && item.section === activeSection) return true;
+    
+    return false;
+  };
+
+  // Handle navigation click
+  const handleNavClick = (e: React.MouseEvent, href: string, section: string) => {
+    // If on homepage and clicking a section that exists on homepage
+    if (pathname === '/' && href !== '/') {
+      e.preventDefault();
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(section);
+      }
+      return;
+    }
+    
+    // If on homepage and clicking home, scroll to top
+    if (pathname === '/' && href === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      return;
+    }
+    
+    // Let Next.js handle route navigation for different pages
+  };
 
   const handleDownloadResume = () => {
     // Replace with your actual resume URL
@@ -51,6 +122,25 @@ const Header: React.FC = () => {
     link.click();
     document.body.removeChild(link);
   };
+
+  // Don't render until client-side to prevent hydration issues
+  if (!isClient) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-40 bg-transparent">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            <div className="w-32 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+            <div className="hidden lg:flex space-x-4">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="w-16 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+              ))}
+            </div>
+            <div className="w-24 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+          </div>
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <>
@@ -90,13 +180,13 @@ const Header: React.FC = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {navItems.map((item) => {
-                const isActive = pathname === item.href || 
-                  (item.href.includes('#') && pathname === '/');
+                const isActive = isNavItemActive(item);
                 
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href, item.section)}
                     className={cn(
                       'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300',
                       'hover:bg-gray-100 dark:hover:bg-gray-800',
@@ -239,13 +329,16 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-2">
                 {navItems.map((item, index) => {
-                  const isActive = pathname === item.href || 
-                    (item.href.includes('#') && pathname === '/');
+                  const isActive = isNavItemActive(item);
                   
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
+                      onClick={(e) => {
+                        handleNavClick(e, item.href, item.section);
+                        setIsMenuOpen(false);
+                      }}
                       className={cn(
                         'px-4 py-3 rounded-lg text-base font-medium transition-all duration-300',
                         'transform hover:scale-105 hover:translate-x-2',

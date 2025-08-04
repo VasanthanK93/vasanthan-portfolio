@@ -59,7 +59,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
   }
 
   return (
-    <section className={cn('py-20 relative overflow-hidden', className)}>
+    <section id='blog' className={cn('py-20 relative overflow-hidden', className)}>
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/50 dark:from-blue-950/20 dark:via-gray-900 dark:to-purple-950/20" />
       

@@ -1,21 +1,36 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
-interface UseDarkModeReturn {
-  isDark: boolean;
+interface ThemeContextType {
   theme: Theme;
+  isDark: boolean;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
 }
 
-export const useDarkMode = (): UseDarkModeReturn => {
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const useTheme = (): ThemeContextType => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
-    // Only run on client side
     if (typeof window === 'undefined') return;
     
     try {
@@ -24,11 +39,21 @@ export const useDarkMode = (): UseDarkModeReturn => {
       const initialTheme = storedTheme || systemTheme;
       
       setThemeState(initialTheme);
+      
+      // Apply theme immediately to prevent flash
+      if (initialTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     } catch (error) {
       console.warn('Failed to load theme from localStorage:', error);
-      // Fallback to system preference
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       setThemeState(systemTheme);
+      
+      if (systemTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
     }
     
     setMounted(true);
@@ -78,7 +103,6 @@ export const useDarkMode = (): UseDarkModeReturn => {
       }
     };
 
-    // Use addEventListener for better browser support
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', handleSystemThemeChange);
     } else {
@@ -103,83 +127,25 @@ export const useDarkMode = (): UseDarkModeReturn => {
     setThemeState(newTheme);
   };
 
-  // Prevent hydration mismatch by returning default values until mounted
-  if (!mounted) {
-    return {
-      isDark: false,
-      theme: 'light',
-      toggleTheme: () => {},
-      setTheme: () => {},
-    };
-  }
-
-  return {
-    isDark: theme === 'dark',
+  const value: ThemeContextType = {
     theme,
+    isDark: theme === 'dark',
     toggleTheme,
     setTheme,
   };
-};
 
-// Hook for theme-aware animations
-export const useThemeTransition = () => {
-  const { theme } = useDarkMode();
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  // Prevent flash of unstyled content
+  if (!mounted) {
+    return (
+      <div style={{ visibility: 'hidden' }}>
+        {children}
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    setIsTransitioning(true);
-    const timer = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 300); // Match your CSS transition duration
-
-    return () => clearTimeout(timer);
-  }, [theme]);
-
-  return { isTransitioning };
-};
-
-// Hook for theme-specific values
-export const useThemeValue = <T>(lightValue: T, darkValue: T): T => {
-  const { isDark } = useDarkMode();
-  return isDark ? darkValue : lightValue;
-};
-
-// Hook for CSS variables based on theme
-export const useThemeVariables = () => {
-  const { isDark } = useDarkMode();
-
-  const variables = {
-    // Background colors
-    background: isDark ? '#0f172a' : '#ffffff',
-    backgroundSecondary: isDark ? '#1e293b' : '#f8fafc',
-    backgroundAccent: isDark ? '#334155' : '#e2e8f0',
-    
-    // Text colors
-    textPrimary: isDark ? '#f8fafc' : '#0f172a',
-    textSecondary: isDark ? '#cbd5e1' : '#64748b',
-    textMuted: isDark ? '#94a3b8' : '#94a3b8',
-    
-    // Border colors
-    border: isDark ? '#334155' : '#e2e8f0',
-    borderHover: isDark ? '#475569' : '#cbd5e1',
-    
-    // Accent colors
-    accent: isDark ? '#3b82f6' : '#2563eb',
-    accentHover: isDark ? '#2563eb' : '#1d4ed8',
-    
-    // Success, warning, error colors
-    success: isDark ? '#10b981' : '#059669',
-    warning: isDark ? '#f59e0b' : '#d97706',
-    error: isDark ? '#ef4444' : '#dc2626',
-    
-    // Shadow values
-    shadow: isDark 
-      ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)' 
-      : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    shadowLg: isDark
-      ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2)'
-      : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-  };
-
-  return variables;
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };

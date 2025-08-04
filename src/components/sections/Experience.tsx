@@ -16,92 +16,70 @@ const Experience: React.FC = () => {
   const tabs = [
     { id: 'experience', label: 'Work Experience', icon: '💼' },
     { id: 'education', label: 'Education', icon: '🎓' },
-    { id: 'skills', label: 'Skills', icon: '⚡' },
     { id: 'certifications', label: 'Certifications', icon: '🏆' }
   ];
 
   const experiences = [
     {
       id: 0,
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Solutions Inc.',
+      title: 'Senior Software Engineer',
+      company: 'Tata Consultancy Services.',
       location: 'Chennai, Tamil Nadu',
-      period: 'Jan 2022 - Present',
-      duration: '2+ years',
+      period: 'Aug 2019 - Present',
+      duration: '6+ years',
       type: 'Full-time',
       description: 'Leading development of enterprise-scale web applications using modern technologies. Mentoring junior developers and architecting scalable solutions.',
       responsibilities: [
-        'Lead a team of 5 developers in building enterprise web applications',
-        'Architect and implement scalable microservices using Node.js and React',
-        'Optimize application performance resulting in 40% faster load times',
+        'Led a team of 7, developing Humana Member Portal app with Vue.js frontend and GraphQL backend.',
+        'Developed app that tracked 7.2 billion user steps participated in 2021 Go365 Wellness National Step Challenge.',
+        'Achieved 90% unit test coverage through rigorous testing protocols.',
+        'Ensured SonarQube quality checks compliance for robust code standards.',
+        'Enhanced app performance and security by upgrading Node.js and MongoDB versions.',
+        'Successfully integrated cutting-edge technologies for seamless healthcare application development.',
+        'Optimised backend processes for improved data handling and user experience.',
         'Collaborate with product teams to deliver high-quality user experiences',
+        'Worked on Estimating, Architecting new features and enhancements',
+        'Participate in code reviews and provide constructive feedback',
         'Mentor junior developers and conduct code reviews',
-        'Implement CI/CD pipelines and DevOps best practices'
       ],
-      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'MongoDB', 'Docker', 'Kubernetes'],
+      technologies: ['ReactJs', 'VueJs', 'Node.js', 'ExpressJs', 'GraphQL', 'AngularJs', 'TypeScript', 'Azure', 'MongoDB', 'Docker', 'Kubernetes', 'Adobe Experience Manager', 'Redis', 'RabbitMQ'],
       achievements: [
         'Reduced application load time by 40%',
         'Led migration of legacy systems to modern stack',
         'Implemented automated testing resulting in 95% code coverage',
-        'Mentored 3 junior developers who got promoted'
+        'Serve as a Subject Matter Expert (SME) in VueJs, ReactJs and Node.js',
+        'Conduct training sessions for new hires and provide technical solutions to challenges across multiple projects',
+        'Recognised and awarded "Technical Excellence Award" and "Beyond Excellence Award" for outstanding contributions to the team and projects'
       ],
       companyLogo: '🏢',
       companyColor: 'from-blue-500 to-blue-600'
     },
     {
       id: 1,
-      title: 'Full Stack Developer',
-      company: 'Digital Innovations Ltd.',
-      location: 'Remote',
-      period: 'Mar 2020 - Dec 2021',
-      duration: '1 year 10 months',
+      title: 'Back-end Developer',
+      company: 'Cholamandalam Investment and Finance Company Limited',
+      location: 'Chennai, Tamil Nadu',
+      period: 'Jul 2016 - Jul 2019',
+      duration: '3 years',
       type: 'Full-time',
-      description: 'Developed and maintained multiple client projects ranging from e-commerce platforms to data visualization dashboards.',
+      description: 'Developed and maintained multiple products for the collection part of the company. Focused on backend development using Node.js and MongoDB, ensuring high performance and reliability.',
       responsibilities: [
-        'Built responsive web applications using React and Vue.js',
-        'Developed RESTful APIs and GraphQL endpoints',
-        'Integrated third-party services and payment gateways',
-        'Collaborated with design teams to implement pixel-perfect UIs',
-        'Optimized database queries and improved application performance',
-        'Participated in agile development processes'
+        'Directed a team enhancing finance modules including legal, repo, sale, and shortfall for vehicle and home financing',
+        'Streamlined backend processes improving efficiency in managing finance operations for vehicle and home sectors',
+        'Implemented robust backend solutions ensuring compliance with financial regulations in vehicle and home finance',
+        'Optimised data handling capabilities within finance modules leading to improved decision-making processes',
+        'Collaborated with finance teams to ensure seamless integration and operation of backend modules'
       ],
-      technologies: ['React', 'Vue.js', 'Node.js', 'PostgreSQL', 'Redis', 'GraphQL', 'Stripe'],
+      technologies: ['Node.js', 'AngularJs', 'Angular', 'MongoDB', 'MySQL', 'ExpressJs'],
       achievements: [
-        'Delivered 15+ client projects on time and within budget',
-        'Improved client satisfaction scores by 25%',
-        'Reduced server costs by 30% through optimization',
-        'Successfully integrated 10+ third-party APIs'
+        'Successfully upgraded Legacy Nodejs and MongoDB versions, enhancing application performance and security',
+        'Integrated Third-party APIs for payment processing and data validation, improving transaction efficiency',
+        'optimised database queries, resulting in a 30% reduction in response time',
+        'Implemented data visualisation tool using Angular for better financial reporting and analysis',
       ],
       companyLogo: '💡',
       companyColor: 'from-purple-500 to-purple-600'
     },
-    {
-      id: 2,
-      title: 'Junior Full Stack Developer',
-      company: 'StartupXYZ',
-      location: 'Chennai, Tamil Nadu',
-      period: 'Jun 2019 - Feb 2020',
-      duration: '9 months',
-      type: 'Full-time',
-      description: 'Started my professional journey in a fast-paced startup environment, working on various aspects of web development.',
-      responsibilities: [
-        'Developed frontend components using React and modern CSS',
-        'Built backend services with Node.js and Express',
-        'Worked with MongoDB for data storage and retrieval',
-        'Participated in product planning and feature discussions',
-        'Fixed bugs and implemented new features',
-        'Learned and applied best practices in software development'
-      ],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'HTML5', 'CSS3', 'JavaScript'],
-      achievements: [
-        'Successfully completed onboarding and training programs',
-        'Contributed to 5 major product releases',
-        'Improved code quality through peer reviews',
-        'Gained valuable experience in startup environment'
-      ],
-      companyLogo: '🚀',
-      companyColor: 'from-green-500 to-green-600'
-    }
   ];
 
   const education = [
@@ -133,97 +111,6 @@ const Experience: React.FC = () => {
       ],
       logo: '🎓',
       color: 'from-indigo-500 to-indigo-600'
-    },
-    {
-      id: 1,
-      degree: 'Higher Secondary (12th Grade)',
-      institution: 'ABC Higher Secondary School',
-      location: 'Chennai, Tamil Nadu',
-      period: '2013 - 2015',
-      grade: '92%',
-      description: 'Completed with distinction in Mathematics, Physics, and Computer Science. Developed strong foundation in logical thinking and problem-solving.',
-      coursework: [
-        'Mathematics',
-        'Physics',
-        'Chemistry',
-        'Computer Science',
-        'English'
-      ],
-      activities: [
-        'School Programming Club Member',
-        'Mathematics Olympiad Participant',
-        'Science Fair Winner - Computer Science Category'
-      ],
-      logo: '📚',
-      color: 'from-teal-500 to-teal-600'
-    }
-  ];
-
-  const skillCategories = [
-    {
-      name: 'Frontend Development',
-      icon: '🎨',
-      color: 'from-blue-500 to-cyan-500',
-      skills: [
-        { name: 'React', proficiency: 5, experience: '4+ years' },
-        { name: 'Vue.js', proficiency: 4, experience: '2+ years' },
-        { name: 'Next.js', proficiency: 5, experience: '3+ years' },
-        { name: 'TypeScript', proficiency: 5, experience: '3+ years' },
-        { name: 'Tailwind CSS', proficiency: 5, experience: '2+ years' },
-        { name: 'HTML5/CSS3', proficiency: 5, experience: '5+ years' }
-      ]
-    },
-    {
-      name: 'Backend Development',
-      icon: '⚙️',
-      color: 'from-green-500 to-emerald-500',
-      skills: [
-        { name: 'Node.js', proficiency: 5, experience: '4+ years' },
-        { name: 'Express.js', proficiency: 5, experience: '4+ years' },
-        { name: 'Python', proficiency: 4, experience: '2+ years' },
-        { name: 'GraphQL', proficiency: 4, experience: '2+ years' },
-        { name: 'RESTful APIs', proficiency: 5, experience: '4+ years' },
-        { name: 'Microservices', proficiency: 4, experience: '2+ years' }
-      ]
-    },
-    {
-      name: 'Database & Storage',
-      icon: '🗄️',
-      color: 'from-purple-500 to-pink-500',
-      skills: [
-        { name: 'MongoDB', proficiency: 5, experience: '4+ years' },
-        { name: 'PostgreSQL', proficiency: 4, experience: '3+ years' },
-        { name: 'Redis', proficiency: 4, experience: '2+ years' },
-        { name: 'MySQL', proficiency: 4, experience: '3+ years' },
-        { name: 'Firebase', proficiency: 4, experience: '2+ years' },
-        { name: 'Prisma', proficiency: 4, experience: '1+ year' }
-      ]
-    },
-    {
-      name: 'Cloud & DevOps',
-      icon: '☁️',
-      color: 'from-orange-500 to-red-500',
-      skills: [
-        { name: 'AWS', proficiency: 4, experience: '2+ years' },
-        { name: 'Docker', proficiency: 4, experience: '2+ years' },
-        { name: 'Kubernetes', proficiency: 3, experience: '1+ year' },
-        { name: 'CI/CD', proficiency: 4, experience: '2+ years' },
-        { name: 'Netlify', proficiency: 4, experience: '2+ years' },
-        { name: 'Vercel', proficiency: 5, experience: '2+ years' }
-      ]
-    },
-    {
-      name: 'Tools & Technologies',
-      icon: '🛠️',
-      color: 'from-indigo-500 to-purple-500',
-      skills: [
-        { name: 'Git', proficiency: 5, experience: '5+ years' },
-        { name: 'VS Code', proficiency: 5, experience: '5+ years' },
-        { name: 'Figma', proficiency: 4, experience: '2+ years' },
-        { name: 'Jest', proficiency: 4, experience: '2+ years' },
-        { name: 'Webpack', proficiency: 4, experience: '3+ years' },
-        { name: 'ESLint', proficiency: 5, experience: '3+ years' }
-      ]
     }
   ];
 
@@ -630,84 +517,6 @@ const Experience: React.FC = () => {
                       </div>
                     </div>
                   </Card>
-                </ScrollAnimation>
-              ))}
-            </div>
-          )}
-
-          {/* Skills Tab */}
-          {activeTab === 'skills' && (
-            <div className="space-y-12">
-              {skillCategories.map((category, categoryIndex) => (
-                <ScrollAnimation
-                  key={category.name}
-                  animation="fadeIn"
-                  delay={categoryIndex * 0.1}
-                  threshold={0.1}
-                >
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-3">
-                      <div className={cn(
-                        'w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl',
-                        `bg-gradient-to-br ${category.color}`
-                      )}>
-                        {category.icon}
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {category.name}
-                      </h3>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {category.skills.map((skill, skillIndex) => (
-                        <Card
-                          key={skill.name}
-                          variant="outlined"
-                          hover
-                          className="p-4"
-                          style={{ animationDelay: `${categoryIndex * 200 + skillIndex * 50}ms` }}
-                        >
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <h4 className="font-semibold text-gray-900 dark:text-white">
-                                {skill.name}
-                              </h4>
-                              <Badge
-                                variant="secondary"
-                                size="xs"
-                                className={cn(
-                                  'text-white',
-                                  getProficiencyColor(skill.proficiency)
-                                )}
-                              >
-                                {getProficiencyLabel(skill.proficiency)}
-                              </Badge>
-                            </div>
-
-                            <div className="space-y-2">
-                              <div className="flex justify-between text-sm">
-                                <span className="text-gray-600 dark:text-gray-400">
-                                  {skill.experience}
-                                </span>
-                                <span className="text-gray-600 dark:text-gray-400">
-                                  {skill.proficiency}/5
-                                </span>
-                              </div>
-                              <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                                <div
-                                  className={cn(
-                                    'h-2 rounded-full transition-all duration-1000',
-                                    getProficiencyColor(skill.proficiency)
-                                  )}
-                                  style={{ width: `${(skill.proficiency / 5) * 100}%` }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
                 </ScrollAnimation>
               ))}
             </div>

@@ -167,7 +167,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
       {/* Animated border */}
       <div className={cn(
-        'absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300',
+        'absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300',
         'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 p-[1px]',
         'before:absolute before:inset-[1px] before:rounded-[calc(0.75rem-1px)]',
         'before:bg-white dark:before:bg-gray-900'

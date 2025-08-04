@@ -20,12 +20,18 @@ const Navigation: React.FC<NavigationProps> = ({
   const pathname = usePathname();
   const scrollProgress = useScrollProgress();
   const [activeSection, setActiveSection] = useState('home');
+  const [isClient, setIsClient] = useState(false);
 
-  // Navigation items with icons and descriptions
+  // Set client flag after mount
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Navigation items with proper section handling
   const navItems = [
     {
       name: 'Home',
-      href: '/',
+      href: '/home',
       section: 'home',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,17 +62,6 @@ const Navigation: React.FC<NavigationProps> = ({
       ),
       description: 'Technical Expertise'
     },
-    // {
-    //   name: 'Projects',
-    //   href: '/projects',
-    //   section: 'projects',
-    //   icon: (
-    //     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    //       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-    //     </svg>
-    //   ),
-    //   description: 'Portfolio & Case Studies'
-    // },
     {
       name: 'Experience',
       href: '/experience',
@@ -104,7 +99,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
   // Track active section based on scroll position (for homepage)
   useEffect(() => {
-    if (pathname !== '/') return;
+    if (!isClient || pathname !== '/') return;
 
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'experience', 'contact'];
@@ -126,25 +121,60 @@ const Navigation: React.FC<NavigationProps> = ({
     handleScroll(); // Initial check
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname]);
+  }, [pathname, isClient]);
 
-  // Determine active item
+  // Determine active item with improved logic
   const getActiveItem = (item: typeof navItems[0]) => {
+    // Exact path match
     if (pathname === item.href) return true;
+    
+    // Homepage section matching
     if (pathname === '/' && item.section === activeSection) return true;
-    if (item.href.includes('#') && item.section === activeSection) return true;
+    
+    // Handle sub-pages (e.g., /about when on homepage about section)
+    if (pathname === '/' && item.href.startsWith(`/${item.section}`)) return false;
+    
     return false;
   };
 
-  // Handle navigation click
-  const handleNavClick = (href: string, section: string) => {
-    if (href.includes('#')) {
+  // Handle navigation click with improved logic
+  const handleNavClick = (e: React.MouseEvent, href: string, section: string) => {
+    // If clicking on a route that matches current pathname, scroll to section instead
+    if (pathname === '/' && href !== '/') {
+      e.preventDefault();
       const element = document.getElementById(section);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(section);
+      }
+      return;
+    }
+    
+    // If on homepage and clicking home, scroll to top
+    if (pathname === '/' && href === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      return;
+    }
+    
+    // For hash links or same page navigation
+    if (href.includes('#')) {
+      e.preventDefault();
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(section);
       }
     }
+    
+    // Let Next.js handle route navigation for different pages
   };
+
+  // Don't render until client-side to prevent hydration issues
+  if (!isClient) {
+    return null;
+  }
 
   // Render based on variant
   if (variant === 'floating') {
@@ -177,7 +207,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={() => handleNavClick(item.href, item.section)}
+                  onClick={(e) => handleNavClick(e, item.href, item.section)}
                   className={cn(
                     'group relative flex items-center w-12 h-12 rounded-xl transition-all duration-300',
                     'hover:w-48 overflow-hidden',
@@ -228,7 +258,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={() => handleNavClick(item.href, item.section)}
+                  onClick={(e) => handleNavClick(e, item.href, item.section)}
                   className={cn(
                     'group flex items-center px-4 py-3 rounded-xl transition-all duration-300',
                     isActive
@@ -266,7 +296,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <Link
             key={item.name}
             href={item.href}
-            onClick={() => handleNavClick(item.href, item.section)}
+            onClick={(e) => handleNavClick(e, item.href, item.section)}
             className={cn(
               'group relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300',
               'hover:bg-gray-100 dark:hover:bg-gray-800',
@@ -290,7 +320,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <div className={cn(
               'absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-medium text-white rounded-lg shadow-lg transition-all duration-200',
               'bg-gray-900 dark:bg-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible',
-              'pointer-events-none whitespace-nowrap'
+              'pointer-events-none whitespace-nowrap z-50'
             )}>
               {item.description}
               <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-gray-900 dark:border-b-gray-700" />
@@ -302,7 +332,7 @@ const Navigation: React.FC<NavigationProps> = ({
   );
 };
 
-// Breadcrumb Navigation Component
+// Rest of the components remain the same...
 export const Breadcrumb: React.FC<{
   items: Array<{ name: string; href?: string; current?: boolean }>;
   className?: string;
@@ -344,7 +374,6 @@ export const Breadcrumb: React.FC<{
   );
 };
 
-// Quick Action Navigation (for CTAs)
 export const QuickActions: React.FC<{
   actions: Array<{
     name: string;
@@ -377,14 +406,20 @@ export const QuickActions: React.FC<{
   );
 };
 
-// Section Navigation (for single page sections)
 export const SectionNavigation: React.FC<{
   sections: Array<{ id: string; name: string; icon?: React.ReactNode }>;
   className?: string;
 }> = ({ sections, className }) => {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const handleScroll = () => {
       const scrollY = window.scrollY + 100;
 
@@ -404,14 +439,16 @@ export const SectionNavigation: React.FC<{
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+  }, [sections, isClient]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  if (!isClient) return null;
 
   return (
     <nav className={cn(

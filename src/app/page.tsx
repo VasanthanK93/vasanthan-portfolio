@@ -4,6 +4,7 @@ import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import BlogSection from '@/components/sections/Blogs';
+import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
@@ -12,8 +13,9 @@ export default function Home() {
       <Hero />
       
       {/* About Section */}
+      <div id='about'>
       <About />
-
+    </div>
       {/* Skills Section */}
       <Skills />
 
@@ -25,6 +27,9 @@ export default function Home() {
 
       {/* Blog Section */}
       <BlogSection />
+
+      {/* contact Section */}
+      <Contact />
       {/* <div className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
