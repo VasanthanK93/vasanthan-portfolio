@@ -170,8 +170,8 @@ const About: React.FC = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              I'm a passionate full-stack developer who loves creating digital experiences 
-              that make a difference. Here's my story.
+              {`I'm a passionate full-stack developer who loves creating digital experiences 
+              that make a difference. Here's my story.`}
             </p>
           </div>
         </RevealTransition>
@@ -221,9 +221,9 @@ const About: React.FC = () => {
                           a hobby quickly turned into a passion.
                         </p>
                         <p>
-                          Over the years, I've had the privilege of working with amazing teams, 
+                          {`Over the years, I've had the privilege of working with amazing teams, 
                           building products that impact thousands of users, and continuously learning 
-                          new technologies. Each project has taught me something valuable.
+                          new technologies. Each project has taught me something valuable.`}
                         </p>
                         <p>
                           Today, I specialize in full-stack development with a focus on UI frameworks 
@@ -424,7 +424,7 @@ const About: React.FC = () => {
                     Beyond Code
                   </h3>
                   <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    When I'm not coding, you'll find me exploring these interests and hobbies.
+                    {`When I'm not coding, you'll find me exploring these interests and hobbies.`}
                   </p>
                 </div>
               </RevealTransition>
@@ -493,10 +493,10 @@ const About: React.FC = () => {
         <RevealTransition direction="up" threshold={600} className="text-center mt-16">
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Let's Work Together
+              {`Let's Work Together`}
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              I'm always excited to take on new challenges and collaborate on interesting projects.
+              {`I'm always excited to take on new challenges and collaborate on interesting projects.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

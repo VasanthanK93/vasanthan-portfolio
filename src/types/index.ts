@@ -142,15 +142,15 @@ export interface ScrollAnimation {
 
 // Component Props Types
 export interface MotionProps {
-  initial?: any;
-  animate?: any;
-  exit?: any;
-  transition?: any;
-  variants?: any;
-  whileHover?: any;
-  whileTap?: any;
-  whileInView?: any;
-  viewport?: any;
+  initial?: string | number | boolean | undefined | null;
+  animate?: string | number | boolean | undefined | null;
+  exit?: string | number | boolean | undefined | null;
+  transition?: string | number | boolean | undefined | null;
+  variants?: string | number | boolean | undefined | null;
+  whileHover?: string | number | boolean | undefined | null;
+  whileTap?: string | number | boolean | undefined | null;
+  whileInView?: string | number | boolean | undefined | null;
+  viewport?: string | number | boolean | undefined | null;
 }
 
 export interface NavItem {
@@ -250,9 +250,9 @@ export interface UseTypingReturn {
 
 // Animation Variants
 export interface AnimationVariants {
-  hidden: any;
-  visible: any;
-  exit?: any;
+  hidden: string | number | boolean | undefined | null;
+  visible: string | number | boolean | undefined | null;
+  exit?: string | number | boolean | undefined | null;
 }
 
 // Form Validation Types

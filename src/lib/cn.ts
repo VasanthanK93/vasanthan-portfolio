@@ -214,7 +214,7 @@ export const patterns = {
 
 // Type definitions for better TypeScript support
 export type ClassNameValue = string | number | boolean | undefined | null;
-export type ClassNameObjectValue = Record<string, any>;
+export type ClassNameObjectValue = Record<string, string | number | boolean | undefined | null>;
 export type ClassNameArray = ClassNameValue[];
 export type ClassNames = ClassNameValue | ClassNameObjectValue | ClassNameArray;
 

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { RevealTransition } from '@/components/animations/PageTransition';
 import { cn } from '@/lib/cn';
+import logo from '@/../public/images/vbk_logo.png'; // Adjust the path as necessary
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
@@ -112,7 +114,7 @@ const Footer: React.FC = () => {
               <Link href="/" className="group flex items-center space-x-3 mb-4">
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl transition-all duration-300 group-hover:rotate-12 group-hover:shadow-lg">
-                    <img src="/images/vbk_logo.png" alt="Logo" />
+                    <Image src={logo} alt="Logo"/>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
                 </div>

@@ -205,8 +205,8 @@ const Experience: React.FC = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Here's a comprehensive overview of my professional journey, education, 
-              technical skills, and certifications that shape my expertise as a developer.
+              {`Here's a comprehensive overview of my professional journey, education, 
+              technical skills, and certifications that shape my expertise as a developer.`}
             </p>
           </div>
         </RevealTransition>
@@ -604,8 +604,8 @@ const Experience: React.FC = () => {
                 Ready to Work Together?
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                With my diverse experience and proven track record, I'm ready to take on your next project. 
-                Let's discuss how I can help bring your ideas to life.
+                {`With my diverse experience and proven track record, I'm ready to take on your next project. 
+                Let's discuss how I can help bring your ideas to life.`}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

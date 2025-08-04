@@ -159,12 +159,12 @@ const Contact: React.FC = () => {
             </Badge>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
               <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
-                Let's Work Together
+                {`Let's Work Together`}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              I'm always excited to discuss new opportunities, interesting projects, 
-              or just have a friendly conversation about technology and development.
+              {`I'm always excited to discuss new opportunities, interesting projects, 
+              or just have a friendly conversation about technology and development.`}
             </p>
           </div>
         </RevealTransition>
@@ -179,8 +179,8 @@ const Contact: React.FC = () => {
                   Contact Information
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Feel free to reach out through any of these channels. I typically respond 
-                  within 24 hours and I'm always happy to help with any questions you might have.
+                  {`Feel free to reach out through any of these channels. I typically respond 
+                  within 24 hours and I'm always happy to help with any questions you might have.`}
                 </p>
               </div>
             </RevealTransition>
@@ -269,7 +269,7 @@ const Contact: React.FC = () => {
                       Available for Projects
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      I'm currently open to new opportunities and collaborations
+                      {`I'm currently open to new opportunities and collaborations`}
                     </p>
                   </div>
                 </div>

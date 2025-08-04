@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                   <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
-                    Hi, I'm{' '}
+                    {`Hi, I'm`}{' '}
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -231,7 +231,7 @@ const Hero: React.FC = () => {
                     </svg>
                   }
                 >
-                  Let's Talk
+                  {`Let's Talk`}
                 </Button>
 
                 <Button

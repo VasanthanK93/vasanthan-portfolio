@@ -553,7 +553,7 @@ const Projects: React.FC = () => {
                   </svg>
                 }
               >
-                Let's Discuss Your Project
+                {`Let's Discuss Your Project`}
               </Button>
             </div>
           </div>

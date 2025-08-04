@@ -7,6 +7,8 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { cn } from '@/lib/cn';
 import Button from '@/components/ui/Button';
+import logo from '@/../public/images/vbk_logo.png'; // Adjust the path as necessary
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -168,7 +170,7 @@ const Header: React.FC = () => {
             >
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg transition-all duration-300 group-hover:rotate-12 group-hover:shadow-lg">
-                  <img src={'/images/vbk_logo.png'} alt="Logo"/>
+                  <Image src={logo} alt="Logo"/>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
               </div>

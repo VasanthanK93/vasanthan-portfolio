@@ -102,7 +102,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
                 No articles yet
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-8">
-                I'm working on some great content. Check back soon!
+                {`I'm working on some great content. Check back soon!`}
               </p>
               <Button
                 as="a"
