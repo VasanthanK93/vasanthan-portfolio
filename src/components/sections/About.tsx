@@ -8,7 +8,7 @@ import Card, { CardContent } from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
-import profilePic from '../../../public/images/profile.jpeg'; // Adjust the path as necessary
+import profilePic from '../../../public/Images/profile.png'; // Adjust the path as necessary
 
 const About: React.FC = () => {
   const [activeTab, setActiveTab] = useState('story');

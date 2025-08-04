@@ -9,7 +9,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { cn } from '@/lib/cn';
-import profilePic from '../../../public/images/profile.jpeg'; // Adjust the path as necessary
+import profilePic from '../../../public/Images/profile.png'; // Adjust the path as necessary
 
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState('');
