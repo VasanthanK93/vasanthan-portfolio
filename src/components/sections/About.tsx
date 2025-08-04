@@ -8,6 +8,7 @@ import Card, { CardContent } from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
+import profilePic from '../../../public/images/profile.jpeg'; // Adjust the path as necessary
 
 const About: React.FC = () => {
   const [activeTab, setActiveTab] = useState('story');
@@ -274,7 +275,7 @@ const About: React.FC = () => {
                       <div className="relative w-full max-w-md mx-auto">
                         <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 to-purple-900 p-1">
                           <Image
-                            src="/images/profile.jpeg" // Add your about image
+                            src={profilePic}// Add your about image
                             alt="Vasanthan working"
                             width={400}
                             height={400}

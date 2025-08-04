@@ -9,6 +9,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { cn } from '@/lib/cn';
+import profilePic from '../../../public/images/profile.jpeg'; // Adjust the path as necessary
 
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState('');
@@ -287,7 +288,7 @@ const Hero: React.FC = () => {
                   {/* Profile Image */}
                   <div className="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900">
                     <Image
-                      src="/images/profile.jpeg" // Add your profile image
+                      src={profilePic} // Add your profile image
                       alt="Vasanthan -Senior Full Stack Developer"
                       width={400}
                       height={400}
