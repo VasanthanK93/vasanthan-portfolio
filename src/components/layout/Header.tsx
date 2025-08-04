@@ -7,7 +7,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { cn } from '@/lib/cn';
 import Button from '@/components/ui/Button';
-import logo from '@/../public/images/vbk_logo.png'; // Adjust the path as necessary
+import logo from '../../../public/Images/vbk_logo.png'; // Adjust the path as necessary
 import Image from 'next/image';
 
 const Header: React.FC = () => {

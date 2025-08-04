@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { RevealTransition } from '@/components/animations/PageTransition';
 import { cn } from '@/lib/cn';
-import logo from '@/../public/images/vbk_logo.png'; // Adjust the path as necessary
+import logo from '../../../public/Images/vbk_logo.png'; // Adjust the path as necessary
 import Image from 'next/image';
 
 const Footer: React.FC = () => {
