@@ -85,29 +85,26 @@ const Experience: React.FC = () => {
   const education = [
     {
       id: 0,
-      degree: 'Bachelor of Engineering in Computer Science',
-      institution: 'Anna University',
+      degree: 'Bachelor of Engineering in Electronics and Communication Engineering',
+      institution: 'Bhajarang Engineering College Affiliated to Anna University',
       location: 'Chennai, Tamil Nadu',
-      period: '2015 - 2019',
-      grade: '8.2 CGPA',
-      description: 'Focused on software engineering, algorithms, and web technologies. Completed various projects in full-stack development.',
+      period: '2010 - 2014',
+      grade: '6.6 CGPA',
+      description: 'Focused on embedded systems, communication protocols, and software development. Developed strong problem-solving skills and a solid foundation in engineering principles.',
       coursework: [
-        'Data Structures and Algorithms',
-        'Database Management Systems',
-        'Software Engineering',
-        'Web Technologies',
+        'Digital Signal Processing',
+        'Microprocessors and Microcontrollers',
+        'Embedded Systems Design',
         'Computer Networks',
-        'Operating Systems'
+        'Software Engineering'
       ],
       projects: [
-        'E-commerce Web Application using MEAN Stack',
-        'Student Management System with PHP and MySQL',
-        'Real-time Chat Application using Socket.io'
+        'Created a framwork for fire safety system using Arduino and sensors',
       ],
       activities: [
-        'Technical Lead - College Coding Club',
-        'Organized programming workshops and hackathons',
-        'Participated in inter-college coding competitions'
+        'Leaded the college technical symposium as the coordinator',
+        'leaded the college conference as the coordinator',
+        'participated in various workshops and seminars on emerging technologies',
       ],
       logo: '🎓',
       color: 'from-indigo-500 to-indigo-600'
@@ -117,56 +114,80 @@ const Experience: React.FC = () => {
   const certifications = [
     {
       id: 0,
-      name: 'AWS Certified Developer - Associate',
-      issuer: 'Amazon Web Services',
-      date: 'March 2023',
-      credentialId: 'AWS-DEV-2023-001',
-      description: 'Demonstrates expertise in developing and maintaining applications on AWS platform.',
-      skills: ['AWS Lambda', 'DynamoDB', 'S3', 'API Gateway', 'CloudFormation'],
-      logo: '☁️',
+      name: 'MongoDB Advanced Developer Training',
+      issuer: 'MongoDB Inc.',
+      date: 'September 2017',
+      credentialId: '',
+      description: 'Demonstrated advanced skills in MongoDB database management, including data modeling, aggregation, and performance tuning.',
+      skills: ['MongoDB', 'Data Modeling', 'Aggregation Framework', 'Indexing', 'Performance Tuning'],
+      logo: '🍃',
       color: 'from-orange-500 to-orange-600',
-      verifyUrl: 'https://aws.amazon.com/verification'
+      verifyUrl: 'https://s3.amazonaws.com/edu-cert.10gen.com/downloads/training_certificates/245751f8-7ce5-4fcb-a089-dfd37bebade4.pdfq'
     },
     {
       id: 1,
-      name: 'MongoDB Certified Developer',
+      name: 'MongoDB Administrator Training',
       issuer: 'MongoDB Inc.',
-      date: 'January 2023',
-      credentialId: 'MONGO-DEV-2023-001',
-      description: 'Certified in MongoDB database design, development, and administration.',
-      skills: ['MongoDB', 'Aggregation', 'Indexing', 'Replication', 'Sharding'],
+      date: 'September 2017',
+      credentialId: '',
+      description: 'Certified in MongoDB administration, covering topics such as replication, sharding, and performance optimization.',
+      skills: ['MongoDB', 'Database Administration', 'Replication', 'Sharding', 'Performance Optimization'],
       logo: '🍃',
       color: 'from-green-500 to-green-600',
-      verifyUrl: 'https://university.mongodb.com/certification'
+      verifyUrl: 'https://s3.amazonaws.com/edu-cert.10gen.com/downloads/training_certificates/5c109786-fe12-4537-a0c3-16a435d5525c.pdf'
     },
     {
       id: 2,
-      name: 'React Developer Certification',
-      issuer: 'Meta (Facebook)',
-      date: 'October 2022',
-      credentialId: 'META-REACT-2022-001',
-      description: 'Advanced certification in React development and modern frontend practices.',
-      skills: ['React', 'Redux', 'Hooks', 'Context API', 'Testing'],
-      logo: '⚛️',
+      name: 'Microsoft Certified: Azure Fundamentals',
+      issuer: 'Microsoft',
+      date: 'November 2021',
+      credentialId: '',
+      description: 'Fundamental knowledge of cloud services and how those services are provided with Microsoft Azure.',
+      skills: ['Azure Fundamentals', 'Cloud Concepts', 'Core Azure Services', 'Security, Privacy, Compliance', 'Pricing and Support'],
+      logo: '☁️',
       color: 'from-blue-500 to-blue-600',
-      verifyUrl: 'https://developers.facebook.com/certification'
+      verifyUrl: 'https://www.credly.com/badges/373f2588-4eb6-45ce-bb44-02f6a7feefef?source=linked_in_profile'
     },
     {
       id: 3,
-      name: 'Google Cloud Platform Fundamentals',
-      issuer: 'Google Cloud',
-      date: 'August 2022',
-      credentialId: 'GCP-FUND-2022-001',
-      description: 'Foundational knowledge of Google Cloud Platform services and solutions.',
-      skills: ['Compute Engine', 'Cloud Storage', 'BigQuery', 'Kubernetes Engine'],
-      logo: '🌩️',
+      name: 'React Frontend Developer',
+      issuer: 'Edureka',
+      date: 'May 2022',
+      credentialId: 'Y1E4EY7P',
+      description: 'Comprehensive training in React.js for building dynamic and responsive web applications.',
+      skills: ['React', 'JavaScript', 'Frontend Development', 'Web Development', 'UI/UX Design'],
+      logo: '⚛️',
       color: 'from-blue-400 to-blue-500',
-      verifyUrl: 'https://cloud.google.com/certification'
+      verifyUrl: 'https://www.edureka.co/certificates/mycertificate/e8b6c9d68bca93b20c61c8eea59764db'
+    },
+    {
+      id: 4,
+      name: 'Next JS',
+      issuer: 'Edureka',
+      date: 'December 2023',
+      credentialId: 'GTHXE2XYY',
+      description: 'Comprehensive training in Next.js for building server-side rendered React applications.',
+      skills: ['Next.js', 'React', 'Server-side Rendering', 'Static Site Generation', 'API Routes'],
+      logo: '⚛️',
+      color: 'from-blue-400 to-blue-500',
+      verifyUrl: 'https://www.edureka.co/certificates/mycertificate/5247a173a274bc01c44e83d6b0e011a7'
+    },
+    {
+      id: 5,
+      name: 'Generative AI Leader Certification',
+      issuer: 'Google',
+      date: 'June 2025',
+      credentialId: '',
+      description: 'Advanced training in Generative AI technologies and their applications in business.',
+      skills: ['Generative AI', 'Machine Learning', 'AI Applications', 'Business Strategy', 'Innovation'],
+      logo: '⚛️',
+      color: 'from-blue-400 to-blue-500',
+      verifyUrl: 'https://www.credly.com/badges/ef78f0d5-1a27-44d3-b4d8-0085a994b54d/linked_in_profile'
     }
   ];
 
   const stats = [
-    { label: 'Years of Experience', value: 5, suffix: '+', icon: '💼' },
+    { label: 'Years of Experience', value: 9, suffix: '+', icon: '💼' },
     { label: 'Domains Worked', value: 3, suffix: '+', icon: '🚀' },
     { label: 'Technologies Mastered', value: 20, suffix: '+', icon: '⚡' },
     { label: 'Certifications Earned', value: 5, suffix: '', icon: '🏆' }
